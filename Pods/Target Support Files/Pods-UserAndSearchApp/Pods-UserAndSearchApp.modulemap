@@ -1,0 +1,6 @@
+framework module Pods_UserAndSearchApp {
+  umbrella header "Pods-UserAndSearchApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
