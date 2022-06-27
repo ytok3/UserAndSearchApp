@@ -7,15 +7,14 @@
 
 import UIKit
 
-protocol SearchBarOutput: AnyObject {
-    func listSearchResults(values: [Search])
-}
+
 
 final class SearchViewController: UIViewController {
     
     // MARK: Properties
     
     private var searchViewModel: SearchViewModel = SearchViewModel(service: Services())
+    private var searchCollectionViewFeatures: SearchCollectionViewFeatures = SearchCollectionViewFeatures()
     
     // MARK: View
     
@@ -26,6 +25,16 @@ final class SearchViewController: UIViewController {
         searchBar.placeholder = Constant.Properties.SEARCH
         searchBar.sizeToFit()
         return searchBar
+    }()
+    
+    private let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .white
+        collectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: Constant.Cell.CELL)
+        return collectionView
     }()
 
     // MARK: LifeCycle
@@ -40,6 +49,10 @@ final class SearchViewController: UIViewController {
     
     func setUpDelegate() {
         
+        collectionView.delegate = searchCollectionViewFeatures
+        collectionView.dataSource = searchCollectionViewFeatures
+        
+        searchCollectionViewFeatures.delegate = self
         searchBar.delegate = self
         
         setUpView()
@@ -49,6 +62,7 @@ final class SearchViewController: UIViewController {
         
         view.backgroundColor = .white
         view.addSubview(searchBar)
+        view.addSubview(collectionView)
 
         setUpConstraint()
     }
@@ -61,8 +75,12 @@ final class SearchViewController: UIViewController {
         
             searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
     
+            collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: padding),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding)
         ])
     }
 }
@@ -83,7 +101,12 @@ extension SearchViewController: UISearchBarDelegate {
 }
 
 extension SearchViewController: SearchBarOutput {
+    func getHeight() -> CGFloat {
+        return view.bounds.height
+    }
+    
     func listSearchResults(values: [Search]) {
-        print(values)
+        searchCollectionViewFeatures.search = values
+        collectionView.reloadData()
     }
 }
