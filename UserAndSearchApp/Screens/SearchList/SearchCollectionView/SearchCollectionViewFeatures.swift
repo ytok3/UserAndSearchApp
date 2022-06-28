@@ -10,6 +10,7 @@ import UIKit
 protocol SearchBarOutput: AnyObject {
     
     func getHeight() -> CGFloat
+    func onSelected(ID: Int)
     func listSearchResults(values: [Search])
     
 }
@@ -36,6 +37,11 @@ extension SearchCollectionViewFeatures: UICollectionViewDelegate, UICollectionVi
                 as? SearchCollectionViewCell else { return UICollectionViewCell() }
         cell.showCharacters(model: search[indexPath.item])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.onSelected(ID: search[indexPath.item].trackID ?? 0)
+        print(search[indexPath.item].trackID ?? 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

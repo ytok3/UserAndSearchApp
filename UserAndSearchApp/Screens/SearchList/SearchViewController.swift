@@ -15,6 +15,7 @@ final class SearchViewController: UIViewController {
     
     private var searchViewModel: SearchViewModel = SearchViewModel(service: Services())
     private var searchCollectionViewFeatures: SearchCollectionViewFeatures = SearchCollectionViewFeatures()
+    private var detailVC: SearchDetailViewController = SearchDetailViewController()
     
     // MARK: View
     
@@ -101,8 +102,15 @@ extension SearchViewController: UISearchBarDelegate {
 }
 
 extension SearchViewController: SearchBarOutput {
+    
     func getHeight() -> CGFloat {
         return view.bounds.height
+    }
+    
+    func onSelected(ID: Int) {
+        searchViewModel.searchDetailResult(trackId: ID)
+        searchViewModel.setDelegateSearchDetail(output: detailVC)
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
     func listSearchResults(values: [Search]) {
