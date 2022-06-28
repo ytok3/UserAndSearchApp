@@ -222,8 +222,8 @@
             filePath = "UserAndSearchApp/Screens/SearchDetail/SearchDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "listSearchDetail(model:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -273,6 +273,22 @@
             startingLineNumber = "33"
             endingLineNumber = "33"
             landmarkName = "fetch(path:data:method:onSucccess:onError:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "48F5A2C1-E607-4D5E-97D7-9D1EBA146D93"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UserAndSearchApp/Screens/SearchDetail/SearchDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "listSearchDetail(model:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

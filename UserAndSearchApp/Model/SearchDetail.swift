@@ -25,7 +25,7 @@ struct Detail: Codable {
     let previewURL: String?
     let artworkUrl30, artworkUrl60, artworkUrl100: String?
     let collectionPrice, trackPrice: Double?
-        let trackRentalPrice, collectionHDPrice: Double?
+    let trackRentalPrice, collectionHDPrice: Double?
     let trackHDPrice, trackHDRentalPrice: Double?
     //let releaseDate: Date?
     let collectionExplicitness, trackExplicitness: String?

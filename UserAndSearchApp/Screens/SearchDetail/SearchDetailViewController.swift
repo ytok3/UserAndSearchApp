@@ -33,34 +33,23 @@ class SearchDetailViewController: UIViewController {
         return sv
     }()
     
-    private var artistNameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.clipsToBounds = true
-        label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 22)
-        label.numberOfLines = 0
-        label.backgroundColor = .white
-        return label
-    }()
-    
-    private var collectionNameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.clipsToBounds = true
-        label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 22)
-        label.numberOfLines = 0
-        label.backgroundColor = .white
-        return label
-    }()
-    
     private var trackNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.clipsToBounds = true
         label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 22)
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.numberOfLines = 0
+        label.backgroundColor = .white
+        return label
+    }()
+    
+    private var artistNameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.clipsToBounds = true
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 15)
         label.numberOfLines = 0
         label.backgroundColor = .white
         return label
@@ -71,7 +60,7 @@ class SearchDetailViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.clipsToBounds = true
         label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 22)
+        label.font = UIFont.systemFont(ofSize: 15)
         label.numberOfLines = 0
         label.backgroundColor = .white
         return label
@@ -82,7 +71,7 @@ class SearchDetailViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.clipsToBounds = true
         label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 22)
+        label.font = UIFont.systemFont(ofSize: 15)
         label.numberOfLines = 0
         label.backgroundColor = .white
         return label
@@ -103,9 +92,8 @@ class SearchDetailViewController: UIViewController {
             
         view.addSubview(detailImage)
         view.addSubview(verticalStack)
-        verticalStack.addArrangedSubview(artistNameLabel)
-        verticalStack.addArrangedSubview(collectionNameLabel)
         verticalStack.addArrangedSubview(trackNameLabel)
+        verticalStack.addArrangedSubview(artistNameLabel)
         verticalStack.addArrangedSubview(kindLabel)
         verticalStack.addArrangedSubview(collectionPriceLabel)
         
@@ -121,7 +109,7 @@ class SearchDetailViewController: UIViewController {
             detailImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,  constant: padding),
             detailImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             detailImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            detailImage.heightAnchor.constraint(equalToConstant: view.frame.height/2),
+            detailImage.heightAnchor.constraint(equalToConstant: view.frame.height / 1.50),
             
             verticalStack.topAnchor.constraint(equalTo: detailImage.bottomAnchor, constant: padding),
             verticalStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
@@ -129,19 +117,15 @@ class SearchDetailViewController: UIViewController {
             verticalStack.widthAnchor.constraint(equalToConstant: view.frame.width - padding * 2),
             verticalStack.heightAnchor.constraint(equalToConstant: view.frame.height / 10),
             
-            artistNameLabel.topAnchor.constraint(equalTo: verticalStack.topAnchor),
-            artistNameLabel.leadingAnchor.constraint(equalTo: verticalStack.leadingAnchor),
-            artistNameLabel.trailingAnchor.constraint(equalTo: verticalStack.trailingAnchor),
-            
-            collectionNameLabel.topAnchor.constraint(equalTo: artistNameLabel.bottomAnchor),
-            collectionNameLabel.leadingAnchor.constraint(equalTo: verticalStack.leadingAnchor),
-            collectionNameLabel.trailingAnchor.constraint(equalTo: verticalStack.trailingAnchor),
-            
-            trackNameLabel.topAnchor.constraint(equalTo: collectionNameLabel.bottomAnchor),
+            trackNameLabel.topAnchor.constraint(equalTo: verticalStack.bottomAnchor),
             trackNameLabel.leadingAnchor.constraint(equalTo: verticalStack.leadingAnchor),
             trackNameLabel.trailingAnchor.constraint(equalTo: verticalStack.trailingAnchor),
             
-            kindLabel.topAnchor.constraint(equalTo: trackNameLabel.bottomAnchor),
+            artistNameLabel.topAnchor.constraint(equalTo: trackNameLabel.bottomAnchor),
+            artistNameLabel.leadingAnchor.constraint(equalTo: verticalStack.leadingAnchor),
+            artistNameLabel.trailingAnchor.constraint(equalTo: verticalStack.trailingAnchor),
+            
+            kindLabel.topAnchor.constraint(equalTo: artistNameLabel.bottomAnchor),
             kindLabel.leadingAnchor.constraint(equalTo: verticalStack.leadingAnchor),
             kindLabel.trailingAnchor.constraint(equalTo: verticalStack.trailingAnchor),
             
@@ -159,11 +143,12 @@ extension SearchDetailViewController: SearchDetailOutput {
     
     func listSearchDetail(model: Detail?) {
         
-        artistNameLabel.text = model?.artistName
-        collectionNameLabel.text = model?.collectionName
+        let kind = (model?.kind ?? "")
+        
+        kindLabel.text = Constant.DetailProperties.KIND + kind.capitalized
         trackNameLabel.text = model?.trackName
-        kindLabel.text = model?.kind
-        collectionPriceLabel.text = "\(model?.collectionPrice ?? 0)"
+        artistNameLabel.text = Constant.DetailProperties.ARTIST_NAME + (model?.artistName ?? "")
+        collectionPriceLabel.text = Constant.DetailProperties.COLLECTION_PRICE + "\(model?.collectionPrice ?? 0)"
         detailImage.af.setImage(withURL: URL(string: (model?.artworkUrl100)!)!)
     }
 }
