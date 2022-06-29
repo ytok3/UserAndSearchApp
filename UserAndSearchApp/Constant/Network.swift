@@ -12,4 +12,5 @@ extension Constant {
         static let BASE_URL = "https://itunes.apple.com/search?term="
         static let ID_BASE_URL = "https://itunes.apple.com/lookup?id="
     }
+    
 }
