@@ -8,5 +8,6 @@ target 'UserAndSearchApp' do
   # Pods for UserAndSearchApp
   pod 'Alamofire', '~> 5.5'
   pod 'AlamofireImage', '~> 4.1'
+  pod 'Toaster'
 
 end

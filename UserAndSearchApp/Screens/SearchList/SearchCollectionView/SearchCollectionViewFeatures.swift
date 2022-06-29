@@ -12,7 +12,6 @@ protocol SearchBarOutput: AnyObject {
     func getHeight() -> CGFloat
     func onSelected(ID: Int)
     func listSearchResults(values: [Search])
-    
 }
 
 class SearchCollectionViewFeatures: NSObject {

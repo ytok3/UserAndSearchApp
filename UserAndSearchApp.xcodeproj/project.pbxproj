@@ -25,6 +25,7 @@
 		47309E62286A107900EF44FB /* SearchDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47309E61286A107900EF44FB /* SearchDetail.swift */; };
 		47309E65286A132B00EF44FB /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47309E64286A132B00EF44FB /* SearchDetailViewController.swift */; };
 		47309E67286B11EB00EF44FB /* DetailProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47309E66286B11EB00EF44FB /* DetailProperties.swift */; };
+		47309E6A286B51FB00EF44FB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47309E69286B51FA00EF44FB /* LoginViewController.swift */; };
 		EA4E7F43573CBABE5FC117CC /* Pods_UserAndSearchApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF83258FAAC15A2F828DE1D /* Pods_UserAndSearchApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		47309E61286A107900EF44FB /* SearchDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetail.swift; sourceTree = "<group>"; };
 		47309E64286A132B00EF44FB /* SearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
 		47309E66286B11EB00EF44FB /* DetailProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProperties.swift; sourceTree = "<group>"; };
+		47309E69286B51FA00EF44FB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		495783933747382B8A706F40 /* Pods-UserAndSearchApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserAndSearchApp.debug.xcconfig"; path = "Target Support Files/Pods-UserAndSearchApp/Pods-UserAndSearchApp.debug.xcconfig"; sourceTree = "<group>"; };
 		6DCA2DB8CD458EEDCF1824F6 /* Pods-UserAndSearchApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserAndSearchApp.release.xcconfig"; path = "Target Support Files/Pods-UserAndSearchApp/Pods-UserAndSearchApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,6 +130,7 @@
 		47309E472868A6F800EF44FB /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				47309E68286B51D000EF44FB /* Login */,
 				47309E592868BD4F00EF44FB /* SearchList */,
 				47309E63286A12D800EF44FB /* SearchDetail */,
 			);
@@ -191,6 +194,14 @@
 			path = SearchDetail;
 			sourceTree = "<group>";
 		};
+		47309E68286B51D000EF44FB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				47309E69286B51FA00EF44FB /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -202,7 +213,7 @@
 				47309E2B2868A61D00EF44FB /* Sources */,
 				47309E2C2868A61D00EF44FB /* Frameworks */,
 				47309E2D2868A61D00EF44FB /* Resources */,
-				DCFA9E573A067A7282239365 /* [CP] Embed Pods Frameworks */,
+				AB73B19AE16C84FC27296EB9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -281,7 +292,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DCFA9E573A067A7282239365 /* [CP] Embed Pods Frameworks */ = {
+		AB73B19AE16C84FC27296EB9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -318,6 +329,7 @@
 				47309E332868A61D00EF44FB /* AppDelegate.swift in Sources */,
 				47309E4F2868B23D00EF44FB /* Search.swift in Sources */,
 				47309E602869AA9800EF44FB /* SearchCollectionViewCell.swift in Sources */,
+				47309E6A286B51FB00EF44FB /* LoginViewController.swift in Sources */,
 				47309E582868B4AA00EF44FB /* Cell.swift in Sources */,
 				47309E352868A61D00EF44FB /* SceneDelegate.swift in Sources */,
 				47309E4A2868ADB200EF44FB /* ServiceManager.swift in Sources */,

@@ -97,6 +97,8 @@ class SearchDetailViewController: UIViewController {
         verticalStack.addArrangedSubview(kindLabel)
         verticalStack.addArrangedSubview(collectionPriceLabel)
         
+        detailImage.layer.cornerRadius = 4
+        
         setUpConstraint()
     }
 

@@ -8,8 +8,7 @@
 import UIKit
 
 
-
-final class SearchViewController: UIViewController {
+class SearchViewController: UIViewController {
     
     // MARK: Properties
     
