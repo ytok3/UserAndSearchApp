@@ -1,15 +1,14 @@
 //
-//  Properties.swift
+//  LoginProperties.swift
 //  UserAndSearchApp
 //
-//  Created by Yasemin TOK on 26.06.2022.
+//  Created by Yasemin TOK on 30.06.2022.
 //
 
 import Foundation
 
 extension Constant {
-    class Properties {
-        static let SEARCH = "Book, movie, music..."
+    class LoginProperties {
         static let WELCOME = "Welcome!"
         static let MAIL = "username@example.com"
         static let PASSWORD = "password.."

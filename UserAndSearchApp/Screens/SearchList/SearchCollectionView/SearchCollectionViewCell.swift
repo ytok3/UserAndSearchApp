@@ -124,10 +124,11 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     func showCharacters(model: Search) {
         
+        searchImage.af.setImage(withURL: URL(string: (model.artworkUrl100!))!)
         collectionTrackNameLabel.text = model.trackName
         let kind = model.kind
         collectionKindLabel.text = kind?.capitalized
-        searchImage.af.setImage(withURL: URL(string: (model.artworkUrl100!))!)
+        
     }
 }
 

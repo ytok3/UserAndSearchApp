@@ -22,7 +22,7 @@ class SearchViewController: UIViewController {
         let searchBar = UISearchBar()
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.searchBarStyle = .minimal
-        searchBar.placeholder = Constant.Properties.SEARCH
+        searchBar.placeholder = Constant.SearchProperties.SEARCH
         searchBar.sizeToFit()
         return searchBar
     }()
@@ -41,7 +41,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+   
         setUpDelegate()
     }
     

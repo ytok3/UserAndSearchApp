@@ -24,7 +24,7 @@ final class LoginViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 30)
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.text = Constant.Properties.WELCOME
+        label.text = Constant.LoginProperties.WELCOME
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
@@ -44,7 +44,7 @@ final class LoginViewController: UIViewController {
         text.clipsToBounds = true
         text.textColor = .black
         text.font = UIFont.systemFont(ofSize: 15)
-        text.placeholder = Constant.Properties.MAIL
+        text.placeholder = Constant.LoginProperties.MAIL
         text.borderStyle = .roundedRect
         text.backgroundColor = .white
         text.layer.cornerRadius = 5
@@ -60,7 +60,7 @@ final class LoginViewController: UIViewController {
         text.clipsToBounds = true
         text.textColor = .black
         text.font = UIFont.systemFont(ofSize: 15)
-        text.placeholder = Constant.Properties.PASSWORD
+        text.placeholder = Constant.LoginProperties.PASSWORD
         text.textAlignment = .left
         text.borderStyle = .roundedRect
         text.backgroundColor = .white
@@ -73,7 +73,7 @@ final class LoginViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.clipsToBounds = true
-        button.setTitle(Constant.Properties.LOGIN, for: .normal)
+        button.setTitle(Constant.LoginProperties.LOGIN, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .systemYellow
         button.layer.cornerRadius = 5
@@ -81,13 +81,22 @@ final class LoginViewController: UIViewController {
         return button
     }()
     
-    private let toast = Toast(text: Constant.Properties.ERROR)
+    private let toast = Toast(text: Constant.LoginProperties.ERROR)
 
     
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let user = UserDefaults.standard
+        
+        user.set("admin@gmail.com", forKey: "admin")
+        user.string(forKey: "admin")
+        
+        if user.bool(forKey: "admin") == true {
+            searchVC.reloadInputViews()
+        }
         
         setUpView()
     }
