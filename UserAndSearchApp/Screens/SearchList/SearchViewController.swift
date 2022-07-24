@@ -15,8 +15,17 @@ class SearchViewController: UIViewController {
     private var searchViewModel: SearchViewModel = SearchViewModel(service: Services())
     private var searchCollectionViewFeatures: SearchCollectionViewFeatures = SearchCollectionViewFeatures()
     private var detailVC: SearchDetailViewController = SearchDetailViewController()
+    private var cvTransfer: [Search] = []
     
     // MARK: View
+    
+    private let horizontalStack: UIStackView = {
+        let sv = UIStackView()
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.distribution = .fillProportionally
+        sv.axis = .horizontal
+        return sv
+    }()
     
     private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -25,6 +34,28 @@ class SearchViewController: UIViewController {
         searchBar.placeholder = Constant.SearchProperties.SEARCH
         searchBar.sizeToFit()
         return searchBar
+    }()
+    
+    private var collectionViewButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.clipsToBounds = true
+        button.setImage(UIImage(named: "cv"), for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(cvPressed), for: .touchUpInside)
+        button.backgroundColor = .white
+        return button
+    }()
+    
+    private var tableViewButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.clipsToBounds = true
+        button.setImage(UIImage(named: "tv"), for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(tvPressed), for: .touchUpInside)
+        button.backgroundColor = .white
+        return button
     }()
     
     private let collectionView: UICollectionView = {
@@ -61,9 +92,12 @@ class SearchViewController: UIViewController {
     func setUpView() {
         
         view.backgroundColor = .white
-        view.addSubview(searchBar)
+        view.addSubview(horizontalStack)
         view.addSubview(collectionView)
-
+        horizontalStack.addArrangedSubview(searchBar)
+        horizontalStack.addArrangedSubview(collectionViewButton)
+        horizontalStack.addArrangedSubview(tableViewButton)
+        
         setUpConstraint()
     }
     
@@ -72,16 +106,42 @@ class SearchViewController: UIViewController {
         let padding: CGFloat = 4
         
         NSLayoutConstraint.activate([
+            
+            horizontalStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            horizontalStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            horizontalStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            horizontalStack.widthAnchor.constraint(equalToConstant: view.frame.width - padding / 2),
         
-            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
-            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            searchBar.topAnchor.constraint(equalTo: horizontalStack.topAnchor, constant: padding),
+            searchBar.widthAnchor.constraint(equalToConstant: view.frame.width / 1.50),
+            
+            collectionViewButton.topAnchor.constraint(equalTo: horizontalStack.topAnchor),
+            collectionViewButton.leftAnchor.constraint(equalTo: searchBar.rightAnchor),
+            collectionViewButton.widthAnchor.constraint(equalToConstant: view.frame.width / 8),
+            
+            tableViewButton.topAnchor.constraint(equalTo: horizontalStack.topAnchor),
+            tableViewButton.leftAnchor.constraint(equalTo: collectionViewButton.rightAnchor),
+            tableViewButton.widthAnchor.constraint(equalToConstant: view.frame.width / 8),
     
-            collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: padding),
+            collectionView.topAnchor.constraint(equalTo: horizontalStack.bottomAnchor, constant: padding),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding)
         ])
+    }
+    
+    @objc func cvPressed() {
+        
+        self.searchCollectionViewFeatures.search = cvTransfer
+        collectionView.reloadData()
+
+    }
+    
+    @objc func tvPressed() {
+        
+        self.searchCollectionViewFeatures.search.removeAll()
+        collectionView.reloadData()
+        
     }
 }
 
@@ -114,6 +174,7 @@ extension SearchViewController: SearchBarOutput {
     
     func listSearchResults(values: [Search]) {
         searchCollectionViewFeatures.search = values
+        cvTransfer = values
         collectionView.reloadData()
     }
 }

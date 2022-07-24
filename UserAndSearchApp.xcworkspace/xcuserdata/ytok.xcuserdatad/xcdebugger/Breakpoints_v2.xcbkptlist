@@ -62,8 +62,8 @@
             filePath = "UserAndSearchApp/Screens/SearchList/SearchViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "searchBar(_:textDidChange:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "UserAndSearchApp/Screens/SearchList/SearchViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "searchBar(_:textDidChange:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -289,6 +289,22 @@
             startingLineNumber = "151"
             endingLineNumber = "151"
             landmarkName = "listSearchDetail(model:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "216DF1C5-F946-461E-AB1B-9F1883705F32"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UserAndSearchApp/Screens/SearchList/SearchViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "tvPressed()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
