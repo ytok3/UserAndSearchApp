@@ -27,6 +27,8 @@
 		47309E65286A132B00EF44FB /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47309E64286A132B00EF44FB /* SearchDetailViewController.swift */; };
 		47309E67286B11EB00EF44FB /* DetailProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47309E66286B11EB00EF44FB /* DetailProperties.swift */; };
 		47309E6A286B51FB00EF44FB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47309E69286B51FA00EF44FB /* LoginViewController.swift */; };
+		47D43E24288D69E2007F6706 /* SearchTableViewFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D43E23288D69E2007F6706 /* SearchTableViewFeatures.swift */; };
+		47D43E26288D6F83007F6706 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D43E25288D6F83007F6706 /* SearchTableViewCell.swift */; };
 		EA4E7F43573CBABE5FC117CC /* Pods_UserAndSearchApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF83258FAAC15A2F828DE1D /* Pods_UserAndSearchApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,8 @@
 		47309E64286A132B00EF44FB /* SearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
 		47309E66286B11EB00EF44FB /* DetailProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProperties.swift; sourceTree = "<group>"; };
 		47309E69286B51FA00EF44FB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		47D43E23288D69E2007F6706 /* SearchTableViewFeatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewFeatures.swift; sourceTree = "<group>"; };
+		47D43E25288D6F83007F6706 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		495783933747382B8A706F40 /* Pods-UserAndSearchApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserAndSearchApp.debug.xcconfig"; path = "Target Support Files/Pods-UserAndSearchApp/Pods-UserAndSearchApp.debug.xcconfig"; sourceTree = "<group>"; };
 		6DCA2DB8CD458EEDCF1824F6 /* Pods-UserAndSearchApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserAndSearchApp.release.xcconfig"; path = "Target Support Files/Pods-UserAndSearchApp/Pods-UserAndSearchApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,6 +180,7 @@
 				47309E362868A61D00EF44FB /* SearchViewController.swift */,
 				47309E5A2868BD7600EF44FB /* SearchViewModel.swift */,
 				47309E5C2869AA4F00EF44FB /* SearchCollectionView */,
+				47D43E21288D69B5007F6706 /* SearchTableView */,
 			);
 			path = SearchList;
 			sourceTree = "<group>";
@@ -203,6 +208,15 @@
 				47309E69286B51FA00EF44FB /* LoginViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		47D43E21288D69B5007F6706 /* SearchTableView */ = {
+			isa = PBXGroup;
+			children = (
+				47D43E23288D69E2007F6706 /* SearchTableViewFeatures.swift */,
+				47D43E25288D6F83007F6706 /* SearchTableViewCell.swift */,
+			);
+			path = SearchTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,9 +338,11 @@
 				47309E67286B11EB00EF44FB /* DetailProperties.swift in Sources */,
 				47309E65286A132B00EF44FB /* SearchDetailViewController.swift in Sources */,
 				47309E5E2869AA7700EF44FB /* SearchCollectionViewFeatures.swift in Sources */,
+				47D43E24288D69E2007F6706 /* SearchTableViewFeatures.swift in Sources */,
 				47309E62286A107900EF44FB /* SearchDetail.swift in Sources */,
 				47309E562868B48900EF44FB /* SearchProperties.swift in Sources */,
 				47309E522868B43E00EF44FB /* Constant.swift in Sources */,
+				47D43E26288D6F83007F6706 /* SearchTableViewCell.swift in Sources */,
 				47309E4C2868B04700EF44FB /* Services.swift in Sources */,
 				47309E542868B45800EF44FB /* Network.swift in Sources */,
 				47309E372868A61D00EF44FB /* SearchViewController.swift in Sources */,

@@ -14,8 +14,9 @@ class SearchViewController: UIViewController {
     
     private var searchViewModel: SearchViewModel = SearchViewModel(service: Services())
     private var searchCollectionViewFeatures: SearchCollectionViewFeatures = SearchCollectionViewFeatures()
+    private var searchTableViewFeatures: SearchTableViewFeatures = SearchTableViewFeatures()
     private var detailVC: SearchDetailViewController = SearchDetailViewController()
-    private var cvTransfer: [Search] = []
+  
     
     // MARK: View
     
@@ -64,14 +65,25 @@ class SearchViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .white
-        collectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: Constant.Cell.CELL)
+        collectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: Constant.Cell.CV_CELL)
         return collectionView
+    }()
+    
+    private let tableView: UITableView = {
+        let tableView = UITableView(frame: .zero)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .white
+        tableView.rowHeight = 200
+        tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: Constant.Cell.TV_CELL)
+        return tableView
     }()
 
     // MARK: LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.isHidden = true
    
         setUpDelegate()
     }
@@ -83,7 +95,11 @@ class SearchViewController: UIViewController {
         collectionView.delegate = searchCollectionViewFeatures
         collectionView.dataSource = searchCollectionViewFeatures
         
+        tableView.delegate = searchTableViewFeatures
+        tableView.dataSource = searchTableViewFeatures
+        
         searchCollectionViewFeatures.delegate = self
+        searchTableViewFeatures.delegate = self
         searchBar.delegate = self
         
         setUpView()
@@ -94,6 +110,7 @@ class SearchViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(horizontalStack)
         view.addSubview(collectionView)
+        view.addSubview(tableView)
         horizontalStack.addArrangedSubview(searchBar)
         horizontalStack.addArrangedSubview(collectionViewButton)
         horizontalStack.addArrangedSubview(tableViewButton)
@@ -126,21 +143,29 @@ class SearchViewController: UIViewController {
             collectionView.topAnchor.constraint(equalTo: horizontalStack.bottomAnchor, constant: padding),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding)
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
+            
+            tableView.topAnchor.constraint(equalTo: horizontalStack.bottomAnchor, constant: padding),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
         ])
     }
     
     @objc func cvPressed() {
         
-        self.searchCollectionViewFeatures.search = cvTransfer
-        collectionView.reloadData()
+        collectionView.isHidden  = false
+      
+        tableView.isHidden = true
 
     }
     
     @objc func tvPressed() {
         
-        self.searchCollectionViewFeatures.search.removeAll()
-        collectionView.reloadData()
+        collectionView.isHidden = true
+       
+        
+        tableView.isHidden = false
         
     }
 }
@@ -174,7 +199,8 @@ extension SearchViewController: SearchBarOutput {
     
     func listSearchResults(values: [Search]) {
         searchCollectionViewFeatures.search = values
-        cvTransfer = values
+        searchTableViewFeatures.searchTV = values
         collectionView.reloadData()
+        tableView.reloadData()
     }
 }

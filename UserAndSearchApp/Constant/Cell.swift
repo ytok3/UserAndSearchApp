@@ -9,6 +9,7 @@ import Foundation
 
 extension Constant {
     class Cell {
-        static let CELL = "cell"
+        static let CV_CELL = "cvCell"
+        static let TV_CELL = "tvCell"
     }
 }

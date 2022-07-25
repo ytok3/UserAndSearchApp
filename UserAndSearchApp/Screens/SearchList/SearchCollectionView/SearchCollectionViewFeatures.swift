@@ -32,7 +32,7 @@ extension SearchCollectionViewFeatures: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.Cell.CELL, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.Cell.CV_CELL, for: indexPath)
                 as? SearchCollectionViewCell else { return UICollectionViewCell() }
         cell.showCharacters(model: search[indexPath.item])
         return cell

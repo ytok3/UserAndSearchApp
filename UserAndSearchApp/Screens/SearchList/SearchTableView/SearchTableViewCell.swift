@@ -1,16 +1,23 @@
 //
-//  SearchCollectionViewCell.swift
+//  SearchTableViewCell.swift
 //  UserAndSearchApp
 //
-//  Created by Yasemin TOK on 27.06.2022.
+//  Created by Yasemin TOK on 24.07.2022.
 //
 
 import UIKit
 import AlamofireImage
 
-class SearchCollectionViewCell: UICollectionViewCell {
+class SearchTableViewCell: UITableViewCell {
     
     // MARK: View
+    
+    private let horizontalStack: UIStackView = {
+        let sv = UIStackView()
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.axis = .horizontal
+        return sv
+    }()
     
     private let searchImage: UIImageView = {
         let iv = UIImageView()
@@ -54,16 +61,10 @@ class SearchCollectionViewCell: UICollectionViewCell {
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
-    
-    // MARK: Init
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-            
-    }
-        
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
     }
     
     // MARK: LifeCycle
@@ -84,8 +85,9 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     func configureCells() {
         
-        contentView.addSubview(searchImage)
-        contentView.addSubview(verticalStack)
+        contentView.addSubview(horizontalStack)
+        horizontalStack.addArrangedSubview(searchImage)
+        horizontalStack.addArrangedSubview(verticalStack)
         verticalStack.addArrangedSubview(collectionTrackNameLabel)
         verticalStack.addArrangedSubview(collectionKindLabel)
         
@@ -99,18 +101,21 @@ class SearchCollectionViewCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             
-            searchImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
-            searchImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            searchImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-            searchImage.heightAnchor.constraint(equalToConstant: contentView.frame.height / 1.25),
+            horizontalStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
+            horizontalStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            horizontalStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+            horizontalStack.widthAnchor.constraint(equalToConstant: contentView.frame.width - padding / 2),
+            
+            searchImage.topAnchor.constraint(equalTo: horizontalStack.topAnchor, constant: padding),
+            searchImage.heightAnchor.constraint(equalToConstant: contentView.frame.height / 1.10),
             searchImage.widthAnchor.constraint(equalToConstant: contentView.frame.width / 2),
             
-            verticalStack.topAnchor.constraint(equalTo: searchImage.bottomAnchor, constant: padding),
-            verticalStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            verticalStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+            verticalStack.topAnchor.constraint(equalTo: horizontalStack.topAnchor, constant: padding),
+            verticalStack.leftAnchor.constraint(equalTo: searchImage.rightAnchor, constant: padding * 4),
+            verticalStack.heightAnchor.constraint(equalToConstant: contentView.frame.height / 1.10),
             verticalStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding),
-            verticalStack.widthAnchor.constraint(equalToConstant: contentView.frame.width - padding * 2),
-        
+            verticalStack.widthAnchor.constraint(equalToConstant: contentView.frame.width / 2),
+            
             collectionTrackNameLabel.topAnchor.constraint(equalTo: verticalStack.topAnchor),
             collectionTrackNameLabel.leadingAnchor.constraint(equalTo: verticalStack.leadingAnchor),
             collectionTrackNameLabel.trailingAnchor.constraint(equalTo: verticalStack.trailingAnchor),
@@ -130,4 +135,3 @@ class SearchCollectionViewCell: UICollectionViewCell {
         collectionKindLabel.text = kind?.capitalized
     }
 }
-
