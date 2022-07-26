@@ -89,15 +89,7 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let user = UserDefaults.standard
-        
-        user.set("admin@gmail.com", forKey: "admin")
-        user.string(forKey: "admin")
-        
-        if user.bool(forKey: "admin") == true {
-            searchVC.reloadInputViews()
-        }
-        
+        rememberUser()
         setUpView()
     }
     
@@ -156,10 +148,19 @@ final class LoginViewController: UIViewController {
             mailTextField.text?.removeAll()
             passwordTextField.text?.removeAll()
             
+            UserDefaults.standard.set(Constant.LoginProperties.SAVE_USER, forKey: Constant.LoginProperties.REMEMBER_USER)
+            
         } else {
             toast.show()
             mailTextField.text?.removeAll()
             passwordTextField.text?.removeAll()
+        }
+    }
+    
+    func rememberUser() {
+        
+        if UserDefaults.standard.string(forKey: Constant.LoginProperties.REMEMBER_USER) == Constant.LoginProperties.SAVE_USER {
+            navigationController?.pushViewController(searchVC, animated: true)
         }
     }
 }

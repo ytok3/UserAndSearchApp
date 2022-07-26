@@ -8,7 +8,6 @@
 import Foundation
 import Alamofire
 
-
 protocol ServiceProtocol {
     
     func getSearch(input: String, onSuccess: @escaping ([Search]?) -> Void, onError: @escaping (AFError) -> Void)

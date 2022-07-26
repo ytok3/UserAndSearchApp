@@ -27,13 +27,11 @@ struct Detail: Codable {
     let collectionPrice, trackPrice: Double?
     let trackRentalPrice, collectionHDPrice: Double?
     let trackHDPrice, trackHDRentalPrice: Double?
-    //let releaseDate: Date?
     let collectionExplicitness, trackExplicitness: String?
     let discCount, discNumber, trackCount, trackNumber: Int?
     let trackTimeMillis: Int?
     let country, currency, primaryGenreName, contentAdvisoryRating: String?
     let longDescription: String?
-    //let hasITunesExtras: Bool?
 
     enum CodingKeys: String, CodingKey {
         case wrapperType, kind

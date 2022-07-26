@@ -61,10 +61,12 @@ class SearchTableViewCell: UITableViewCell {
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
+    
+    // MARK: Init
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
     
     // MARK: LifeCycle

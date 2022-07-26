@@ -24,7 +24,6 @@ struct Search: Codable {
     let previewURL: String?
     let artworkUrl30, artworkUrl60, artworkUrl100: String?
     let collectionPrice, trackPrice: Double?
-//    let releaseDate: Double?
     let collectionExplicitness, trackExplicitness: String?
     let discCount, discNumber, trackCount, trackNumber: Int?
     let trackTimeMillis: Int?
@@ -50,7 +49,6 @@ struct Search: Codable {
         case trackViewURL = "trackViewUrl"
         case previewURL = "previewUrl"
         case artworkUrl30, artworkUrl60, artworkUrl100, collectionPrice, trackPrice, collectionExplicitness, trackExplicitness, discCount, discNumber, trackCount, trackNumber, trackTimeMillis, country, currency, primaryGenreName, isStreamable
-//        case releaseDate
         case collectionArtistID = "collectionArtistId"
         case collectionArtistViewURL = "collectionArtistViewUrl"
         case trackRentalPrice

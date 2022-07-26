@@ -30,8 +30,7 @@ final class SearchViewModel: SearchViewModelProtocol {
     init(service: ServiceProtocol) {
         self.service = service
     }
-    
-    
+
     // MARK: Func
     
     func setDelegateSearchAll(output: SearchBarOutput) {

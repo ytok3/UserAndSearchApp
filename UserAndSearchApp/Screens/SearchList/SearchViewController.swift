@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class SearchViewController: UIViewController {
     
     // MARK: Properties
@@ -17,7 +16,6 @@ class SearchViewController: UIViewController {
     private var searchTableViewFeatures: SearchTableViewFeatures = SearchTableViewFeatures()
     private var detailVC: SearchDetailViewController = SearchDetailViewController()
   
-    
     // MARK: View
     
     private let horizontalStack: UIStackView = {
@@ -41,8 +39,7 @@ class SearchViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.clipsToBounds = true
-        button.setImage(UIImage(named: "cv"), for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setImage(UIImage(named: Constant.SearchProperties.CV), for: .normal)
         button.addTarget(self, action: #selector(cvPressed), for: .touchUpInside)
         button.backgroundColor = .white
         return button
@@ -52,8 +49,7 @@ class SearchViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.clipsToBounds = true
-        button.setImage(UIImage(named: "tv"), for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setImage(UIImage(named: Constant.SearchProperties.TV), for: .normal)
         button.addTarget(self, action: #selector(tvPressed), for: .touchUpInside)
         button.backgroundColor = .white
         return button
@@ -82,13 +78,24 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         tableView.isHidden = true
    
+        setUpNavigation()
         setUpDelegate()
     }
     
     // MARK: Func
+    
+    func setUpNavigation() {
+
+        let logOut = UIBarButtonItem()
+        logOut.title = Constant.SearchProperties.LOG_OUT
+        navigationController?.navigationBar.backItem?.backBarButtonItem = logOut
+        navigationController?.navigationBar.backIndicatorImage = UIImage(named: Constant.SearchProperties.OUT)
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: Constant.SearchProperties.OUT)
+   
+    }
     
     func setUpDelegate() {
         
@@ -100,6 +107,7 @@ class SearchViewController: UIViewController {
         
         searchCollectionViewFeatures.delegate = self
         searchTableViewFeatures.delegate = self
+        
         searchBar.delegate = self
         
         setUpView()
@@ -155,18 +163,13 @@ class SearchViewController: UIViewController {
     @objc func cvPressed() {
         
         collectionView.isHidden  = false
-      
         tableView.isHidden = true
-
     }
     
     @objc func tvPressed() {
         
         collectionView.isHidden = true
-       
-        
         tableView.isHidden = false
-        
     }
 }
 

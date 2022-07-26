@@ -76,6 +76,8 @@ class SearchDetailViewController: UIViewController {
         label.backgroundColor = .white
         return label
     }()
+    
+    // MARK: LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()

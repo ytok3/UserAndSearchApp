@@ -10,7 +10,9 @@ import Foundation
 extension Constant {
     class SearchProperties {
         static let SEARCH = "Book, movie, music..."
-        static let CV = "CV....."
-        static let TV = "TV"
+        static let CV = "cv"
+        static let TV = "tv"
+        static let LOG_OUT = ""
+        static let OUT = "out"
     }
 }

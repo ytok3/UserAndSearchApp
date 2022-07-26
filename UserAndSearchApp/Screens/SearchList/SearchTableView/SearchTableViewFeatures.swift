@@ -15,6 +15,8 @@ class SearchTableViewFeatures: UIViewController {
     weak var delegate: SearchBarOutput?
 }
 
+// MARK: Exensions
+
 extension SearchTableViewFeatures : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

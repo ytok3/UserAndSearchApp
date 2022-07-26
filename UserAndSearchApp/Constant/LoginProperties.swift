@@ -14,5 +14,7 @@ extension Constant {
         static let PASSWORD = "password.."
         static let LOGIN = "Login"
         static let ERROR = "Incorrect entry"
+        static let SAVE_USER = "Save"
+        static let REMEMBER_USER = "RememberUser"
     }
 }
