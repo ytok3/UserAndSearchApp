@@ -92,8 +92,6 @@ class SearchViewController: UIViewController {
         let logOut = UIBarButtonItem()
         logOut.title = Constant.SearchProperties.LOG_OUT
         navigationController?.navigationBar.backItem?.backBarButtonItem = logOut
-        navigationController?.navigationBar.backIndicatorImage = UIImage(named: Constant.SearchProperties.OUT)
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: Constant.SearchProperties.OUT)
    
     }
     

@@ -31,7 +31,7 @@ class SearchTableViewCell: UITableViewCell {
     private let verticalStack: UIStackView = {
         let sv = UIStackView()
         sv.translatesAutoresizingMaskIntoConstraints = false
-        sv.distribution = .fillEqually
+        sv.distribution = .fillProportionally
         sv.axis = .vertical
         return sv
     }()
@@ -119,13 +119,9 @@ class SearchTableViewCell: UITableViewCell {
             verticalStack.widthAnchor.constraint(equalToConstant: contentView.frame.width / 2),
             
             collectionTrackNameLabel.topAnchor.constraint(equalTo: verticalStack.topAnchor),
-            collectionTrackNameLabel.leadingAnchor.constraint(equalTo: verticalStack.leadingAnchor),
-            collectionTrackNameLabel.trailingAnchor.constraint(equalTo: verticalStack.trailingAnchor),
             
-            collectionKindLabel.topAnchor.constraint(equalTo: collectionTrackNameLabel.bottomAnchor),
-            collectionKindLabel.leadingAnchor.constraint(equalTo: verticalStack.leadingAnchor),
-            collectionKindLabel.trailingAnchor.constraint(equalTo: verticalStack.trailingAnchor),
-            collectionKindLabel.bottomAnchor.constraint(equalTo: verticalStack.bottomAnchor, constant: -padding)
+            collectionKindLabel.topAnchor.constraint(equalTo: collectionTrackNameLabel.bottomAnchor)
+        
         ])
     }
     
